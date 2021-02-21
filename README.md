@@ -8,4 +8,4 @@ the most plausible response.
 Try for yourself by forking this repo and modifying file: **questions.txt** to
 add more questions, file: **answers.txt** to add more answers. Commit the
 results and wait for the GitHub Action to run to see the most plausible answer
-to each question in file **results.txt**!
+to each question in file **output.txt**!
