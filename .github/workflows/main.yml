@@ -1,0 +1,42 @@
+# Test text matching
+
+name: Test
+
+on:
+  push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install JSON
+      run: |
+        sudo cpan install -T JSON
+
+    - name: Install Data::Table::Text
+      run: |
+        sudo cpan install -T Data::Table::Text
+
+    - name: Install Date::Manip
+      run: |
+        sudo cpan install -T Date::Manip
+
+    - name: Install Digest::SHA1
+      run: |
+        sudo cpan install -T Digest::SHA1
+
+    - name: Install GitHub Crud
+      run: |
+        sudo cpan install -T GitHub::Crud
+
+    - name: Test
+      run: |
+        perl matchText.pl > output.txt
+        cat output.txt
+
+    - name: Upload results
+      run: |
+        perl -MGitHub::Crud -e "GitHub::Crud::writeFileFromFileFromCurrentRun q(output.txt)"
