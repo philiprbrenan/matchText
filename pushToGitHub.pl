@@ -28,7 +28,7 @@ if (1)                                                                          
    }
  }
 
-my $y = <<END;                                                                  # Workflow to test each cpan module
+my $y = <<'END';                                                                # Workflow to test each cpan module
 # Test text matching
 
 name: Test
@@ -51,6 +51,10 @@ jobs:
       run: |
         sudo cpan install -T Data::Table::Text
 
+    - name: Install Date::Manip
+      run: |
+        sudo cpan install -T Date::Manip
+
     - name: Install Digest::SHA1
       run: |
         sudo cpan install -T Digest::SHA1
@@ -59,6 +63,14 @@ jobs:
       run: |
         sudo cpan install -T GitHub::Crud
 
+    - name: Install Math::Permute::List
+      run: |
+        sudo cpan install -T Math::Permute::List
+
+    - name: Install Text::Match
+      run: |
+        sudo cpan install -T Text::Match
+
     - name: Test
       run: |
         perl matchText.pl > output.txt
@@ -66,7 +78,7 @@ jobs:
 
     - name: Upload results
       run: |
-        perl -MGitHub::Crud -e "GitHub::Crud::writeFileFromFileFromCurrentRun q(output.txt)"
+         GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} perl -MGitHub::Crud -e "GitHub::Crud::writeFileFromFileFromCurrentRun q(output.txt)"
 END
 
 lll "Work flow: ", writeFileUsingSavedToken($user, $repo, $wf, $y);
