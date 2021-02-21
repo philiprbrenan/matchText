@@ -1,4 +1,4 @@
-#!/usr/bin/perl -I/home/phil/perl/cpan/DataTableText/lib/ -I/home/phil/perl/z/z/jordan/ -I.
+#!/usr/bin/perl -I/home/phil/perl/cpan/DataTableText/lib/
 #-------------------------------------------------------------------------------
 # Answer some questions
 # Philip R Brenan at appaapps dot com, Appa Apps Ltd Inc., 2021
@@ -8,7 +8,7 @@ use strict;
 use Carp;
 use Data::Dump qw(dump);
 use Data::Table::Text qw(:all);
-use MatchText qw(response);
+use Text::Match qw(response);
 use feature qw(say current_sub);
 
 my $questions  = q(questions.txt);                                              # The questions
